@@ -40,11 +40,11 @@ CREATE TABLE CustomerOrders (
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
--- 5. Table: ShippingCosts (Freight Rates Matrix)
--- Cost to ship 1 unit of a product from a specific warehouse to a specific city
-CREATE TABLE IF NOT EXISTS ShippingCosts (
-    warehouse_id INT,
-    destination_city VARCHAR(50),
+-- 5. Table: ShippingCosts (مصفوفة أسعار الشحن والتوصيل)
+IF OBJECT_ID('dbo.ShippingCosts', 'U') IS NOT NULL DROP TABLE dbo.ShippingCosts;
+CREATE TABLE ShippingCosts (
+    warehouse_id INT NOT NULL,
+    destination_city VARCHAR(50) NOT NULL,
     shipping_cost_per_unit DECIMAL(8, 2) NOT NULL,
     PRIMARY KEY (warehouse_id, destination_city),
     FOREIGN KEY (warehouse_id) REFERENCES Warehouses(warehouse_id)
