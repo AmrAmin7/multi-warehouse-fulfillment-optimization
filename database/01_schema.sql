@@ -30,8 +30,9 @@ CREATE TABLE IF NOT EXISTS WarehouseInventory (
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
--- 4. Table: CustomerOrders (Demand)
-CREATE TABLE IF NOT EXISTS CustomerOrders (
+-- 4. Table: CustomerOrders (طلبات العملاء والطلب المتوقع)
+IF OBJECT_ID('dbo.CustomerOrders', 'U') IS NOT NULL DROP TABLE dbo.CustomerOrders;
+CREATE TABLE CustomerOrders (
     order_id INT PRIMARY KEY,
     customer_city VARCHAR(50) NOT NULL,
     product_id INT NOT NULL,
