@@ -2,6 +2,15 @@
 -- Project: Multi-Warehouse Supply Chain Optimization
 -- Objective: Create relational schema for warehouses, products, inventory, and orders.
 -- ====================================================================
+USE master;
+GO
+
+-- Create database if it does not exist
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'SupplyChainOpt')
+BEGIN
+    CREATE DATABASE SupplyChainOpt;
+END
+GO
 
 -- 1. Table: Warehouses
 CREATE TABLE IF NOT EXISTS Warehouses (
