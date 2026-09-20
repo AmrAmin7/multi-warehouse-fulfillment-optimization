@@ -12,8 +12,12 @@ BEGIN
 END
 GO
 
--- 1. Table: Warehouses
-CREATE TABLE IF NOT EXISTS Warehouses (
+USE SupplyChainOpt;
+GO
+
+-- 1. Table: Warehouses (المستودعات)
+IF OBJECT_ID('dbo.Warehouses', 'U') IS NOT NULL DROP TABLE dbo.Warehouses;
+CREATE TABLE Warehouses (
     warehouse_id INT PRIMARY KEY,
     warehouse_name VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
