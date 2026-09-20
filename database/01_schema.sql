@@ -24,8 +24,9 @@ CREATE TABLE Warehouses (
     max_capacity_units INT NOT NULL
 );
 
--- 2. Table: Products
-CREATE TABLE IF NOT EXISTS Products (
+-- 2. Table: Products (المنتجات)
+IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL DROP TABLE dbo.Products;
+CREATE TABLE Products (
     product_id INT PRIMARY KEY,
     product_name VARCHAR(100) NOT NULL,
     category VARCHAR(50) NOT NULL,
