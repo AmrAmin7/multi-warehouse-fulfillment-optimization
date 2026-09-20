@@ -33,10 +33,11 @@ CREATE TABLE Products (
     unit_weight_kg DECIMAL(8, 2) NOT NULL
 );
 
--- 3. Table: WarehouseInventory
-CREATE TABLE IF NOT EXISTS WarehouseInventory (
-    warehouse_id INT,
-    product_id INT,
+-- 3. Table: WarehouseInventory (المخزون المتاح وتكلفة التخزين)
+IF OBJECT_ID('dbo.WarehouseInventory', 'U') IS NOT NULL DROP TABLE dbo.WarehouseInventory;
+CREATE TABLE WarehouseInventory (
+    warehouse_id INT NOT NULL,
+    product_id INT NOT NULL,
     available_stock INT NOT NULL,
     holding_cost_per_unit DECIMAL(8, 2) NOT NULL,
     PRIMARY KEY (warehouse_id, product_id),
